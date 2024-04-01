@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <h2 class="mb-4">Editar Libro</h2>
+        <form id="loginform" 
+        autocomplete="off"
+        [formGroup]="booksForm"
+        (ngSubmit)="updateBook()">
+            <div class="mb-3">
+                <label class="form-label">Nombre del Libro</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Autor</label>
+                <input type="text" class="form-control" id="author" formControlName="author">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Lanzamiento (Año)</label>
+                <input type="text" class="form-control" formControlName="date">
+            </div>
+
+            <div class="row">
+                <div class="col text-danger">
+
+                    <p *ngIf="campoNoValido('name')">* El nombre es obligatorio</p>
+                    <p *ngIf="campoNoValido('author')">* El autor es obligatorio</p>
+                    <p *ngIf="campoNoValido('date')">* La fecha es obligatoria</p>
+
+                </div>
+            </div>
+
+            <div *ngIf="success == true" class="row">
+                <div class="col alert alert-success">
+                    El libro ha sido modificado con éxito!
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Editar Libro</button>
+                </div>
+                <div class="col text-end">
+                    <button type="submit" routerLink="/" class="btn btn-outline-secondary">Regresar</button>
+                </div>
+            </div>
+              
+        </form>
+        </div>
+    </div>
+</div>
+
